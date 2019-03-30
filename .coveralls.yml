@@ -1,3 +1,0 @@
-service_name: circleci
-repo_token: RVvf1mLjX4bOaW77hJ40hpeMnoRTBmnfL
-COVERALLS_REPO_TOKEN=RVvf1mLjX4bOaW77hJ40hpeMnoRTBmnfL coveralls
