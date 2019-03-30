@@ -9,13 +9,9 @@ jobs:
     - run:
         name: Run tests
         command: |
-          export PYTHONPATH="$PYTHONPATH:$HOME"
-          mkdir reports
-          cd reports
-          mkdir nosetests
-          cd ..
-          echo "Test results: " >> test-results
-          coverage run --source=./abcd, -m nose -w ./tests --with-xunit --xunit-file ./reports/nosetests/nosetests-report.xml >> test-results 2>&1
+          sudo pip install pipenv
+          pipenv install
+          pipenv run python tests/test_script.py test
     - store_test_results:
         path: ./reports
     - store_artifacts:
