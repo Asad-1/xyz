@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/xyz
+    docker:
+    - image: circleci/python:3.6.4
+    steps:
+    - checkout
+    - run:
+        name: Run tests
+        command: |
+          export PYTHONPATH="$PYTHONPATH:$HOME"
+          mkdir reports
+          cd reports
+          mkdir nosetests
+          cd ..
+          echo "Test results: " >> test-results
+          coverage run --source=./abcd, -m nose -w ./tests --with-xunit --xunit-file ./reports/nosetests/nosetests-report.xml >> test-results 2>&1
+    - store_test_results:
+        path: ./reports
+    - store_artifacts:
+        path: test-results
+        destination: tr1
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
