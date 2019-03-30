@@ -9,9 +9,15 @@ jobs:
     - run:
         name: Run tests
         command: |
-          sudo pip install pipenv
-          pipenv install
-          pipenv run python tests/test_script.py test
+          export PYTHONPATH="$PYTHONPATH:$HOME"
+          
+          sudo pip install coverage nose codecov
+          echo "Coverage report: " >> test-results
+          coverage run --source=./abcd -m nose -w ./tests
+          coverage report -m >> test-results 2>&1
+          
+          codecov
+          
     - store_test_results:
         path: ./reports
     - store_artifacts:
