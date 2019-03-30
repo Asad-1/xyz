@@ -9,6 +9,7 @@ jobs:
     - run:
         name: Run tests
         command: |
+          export PYTHONPATH="$PYTHONPATH:$HOME"
           sudo pip install pipenv
           pipenv install
           pipenv run python tests/test_script.py test
