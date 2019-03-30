@@ -12,6 +12,8 @@ jobs:
           export PYTHONPATH="$PYTHONPATH:$HOME"
           sudo pip install pipenv
           pipenv install
+          pip install python-coveralls
+          coveralls
           pipenv run python tests/test_script.py test
     - store_test_results:
         path: ./reports
