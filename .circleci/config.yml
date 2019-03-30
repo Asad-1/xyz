@@ -11,14 +11,12 @@ jobs:
         command: |
           export PYTHONPATH="$PYTHONPATH:$HOME"
           
-          sudo pip install coverage nose python-coveralls
+          sudo pip install coverage nose codecov
           echo "Coverage report: " >> test-results
           coverage run --source=./abcd -m nose -w ./tests
           coverage report -m >> test-results 2>&1
           
-          coverage xml
-          export COVERALLS_REPO_TOKEN="RVvf1mLjX4bOaW77hJ40hpeMnoRTBmnfL"
-          coveralls
+          codecov
           
     - store_test_results:
         path: ./reports
