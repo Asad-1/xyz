@@ -16,6 +16,9 @@ jobs:
           coverage run --source=./abcd -m nose -w ./tests
           coverage report -m >> test-results 2>&1
           
+          coverage xml
+          coveralls
+          
     - store_test_results:
         path: ./reports
     - store_artifacts:
