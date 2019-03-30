@@ -11,7 +11,7 @@ jobs:
         command: |
           export PYTHONPATH="$PYTHONPATH:$HOME"
           
-          pip install coverage
+          sudo pip install coverage
           echo "Coverage report: " >> test-results
           coverage run --source=./abcd -m nose -w ./tests
           coverage report -m >> test-results 2>&1
