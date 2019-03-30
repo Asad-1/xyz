@@ -1,7 +1,7 @@
 import xyz.abcd.script as module
 import unittest as _ut
 
-class TestP1Over2Spectroscopy(_ut.TestCase):
+class Testxyz(_ut.TestCase):
 
     def test_bin(self):
         self.assertEqual(module.bin(0,0), 0)
