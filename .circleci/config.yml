@@ -10,11 +10,12 @@ jobs:
         name: Run tests
         command: |
           export PYTHONPATH="$PYTHONPATH:$HOME"
-          sudo pip install pipenv
-          pipenv install
-          pip install python-coveralls
-          coveralls
-          pipenv run python tests/test_script.py test
+          
+          pip install coverage.py
+          echo "Coverage report: " >> test-results
+          coverage run --source=./abcd -m nose -w ./tests
+          coverage report -m >> test-results 2>&1
+          
     - store_test_results:
         path: ./reports
     - store_artifacts:
