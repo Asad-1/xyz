@@ -1,4 +1,4 @@
-import xyz.abcd.script as module
+import abcd.script as module
 import unittest as _ut
 
 class TestP1Over2Spectroscopy(_ut.TestCase):
